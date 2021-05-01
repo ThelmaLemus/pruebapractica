@@ -5,6 +5,14 @@
     $fechaI = $_GET['p'];
     $fechaF = $_GET['u'];
     $base = 0;
+    $splitFechaI = explode("-", $fechaI);
+
+    $currentTime2 = mktime(1, 1, 1, $splitFechaI[1], 15, $splitFechaI[0]);
+    $hoursToSubtract2 = 720;
+    $timeToSubtract2 = ($hoursToSubtract2 * 60 * 60);
+    $timeInPast2 = $currentTime2 - $timeToSubtract2;
+    $mesAnterior = date("Y-m", $timeInPast2);
+
     $splitMesAnterior = explode("-", $mesAnterior);
 
     $query = $mysqli->query("SELECT * FROM poliza WHERE (fecha BETWEEN '$fechaI' AND '$fechaF') ORDER BY cuentaId ASC");
@@ -22,11 +30,17 @@
             $query2 = $mysqli->query("SELECT sum(saldo) AS inicial FROM poliza 
                                         WHERE YEAR(fecha) = $splitMesAnterior[0] AND 
                                         MONTH(fecha) = $splitMesAnterior[1] AND 
-                                        cuentaId = $cuentaId
-                                        ORDER BY no ASC");
-            
-            $saldoInicial = $query2->fetch_assoc()['inicial'];
-            
+                                        cuentaId = $cuentaId");
+
+            if(($query2->num_rows) > 0)
+            {
+                $saldoInicial = ($query2->fetch_assoc())['inicial'];
+            }
+            else
+            {
+                $saldoInicial = 0;
+            }
+
             // FORMATO DE LA FECHA A DESPLEGAR
             $fecha = date("j-F-Y", strtotime($fecha));
 
