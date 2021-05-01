@@ -1,0 +1,30 @@
+body{
+    background-color: #F4F7FD;
+}
+
+.formulario, .add, .tabla, .cuadro, .guardar, .mes, .fechas{
+    margin-top: 5%;
+}
+
+.marco{
+    margin-top: 2%;
+    border: 1px solid #d0d0d0;
+    border-radius: 20px;
+    padding: 15px 15px;
+}
+
+.rubroDebe, .rubroHaber, #totalDebe, #totalHaber{
+    margin-top: 2%;
+}
+
+#totalDebe, #totalHaber, .montoDebe, .montoHaber{
+    text-align: right;
+}
+
+.color{
+    background-color: #e1e1e1;
+}
+
+.linea{
+    border-bottom: double;
+}
