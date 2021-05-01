@@ -21,11 +21,5 @@
     $primerDia = date("Y-m-01", $timeInPast);
     // FECHA DEL ÚLTIMO DÍA DEL MES
     $ultimoDia = date("Y-m-t", $timeInPast);
-    
-    // FECHA DEL MES ANTERIOR
-    $hoursToSubtract = 720;
-    $timeToSubtract = ($hoursToSubtract * 60 * 60);
-    $timeInPast = $currentTime - $timeToSubtract;
-    $mesAnterior = date("Y-m", $timeInPast);
 
 ?>
